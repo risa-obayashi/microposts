@@ -30,5 +30,6 @@ class MicropostsController < ApplicationController
     @micropost = current_user.microposts.find_by(id: params[:id])
     unless @micropost
       redirect_to root_url
+    end
   end
 end

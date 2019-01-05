@@ -1,0 +1,11 @@
+  <% if micropost.like?(current_user) %>
+      <%= form_for(micropost.likes.find_by(user_id: current_user.id), html: { method: :delete }) do |f| %>
+      　　<%= hidden_field_tag :micropost_id, micropost.id %>
+          <%= f.submit 'お気に入りから外す', class: 'btn btn-danger btn-xs' %>
+      <% end %>
+  <% else %>
+    <%= form_for(micropost.likes.build) do |f| %>
+      <%= hidden_field_tag :micropost_id, micropost.id %>
+      <%= f.submit 'お気に入りに登録', class: 'btn btn-primary btn-xs' %>
+    <% end %>
+  <% end %>
